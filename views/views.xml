@@ -1,0 +1,299 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="salespop.user_tree">
+      <field name="name">User tree</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="userName"/>
+          <field name="mail"/>
+          <field name="password"/>
+          <field name="numTel"/>
+          <field name="onSale"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.user_form">
+      <field name="name">User form</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="userName"/>
+              <field name="mail"/>
+              <field name="password"/>
+              <field name="numTel"/>
+              <field name="onSale"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Inherit -->
+
+    <record model="ir.ui.view" id="salespop.user_partner_list">
+      <field name="name">Salespop user partner</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <notebook>
+            <page string="SalesPop">
+            <group>
+              <sheet>
+                <group>
+                <field name="name"/>
+                <field name="userName"/>
+                <field name="mail"/>
+                <field name="password"/>
+                <field name="numTel"/>
+                </group>
+              </sheet>
+            </group>
+            </page>
+        </notebook>
+      </field>
+    </record>
+
+    <!-- Producto -->
+
+    <record model="ir.ui.view" id="salespop.product_tree">
+      <field name="name">Producte tree</field>
+      <field name="model">salespop.product</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="price"/>
+          <field name="categoria"/>
+          <field name="description"/>
+          <field name="ubication"/>
+          <field name="publicationDate"/>
+          <field name="seller"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.product_form">
+      <field name="name">Producte form</field>
+      <field name="model">salespop.product</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="price"/>
+              <field name="categoria"/>
+              <field name="description"/>
+              <field name="ubication"/>
+              <field name="publicationDate"/>
+              <field name="seller"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- categoria -->
+
+    <record model="ir.ui.view" id="salespop.category_tree">
+      <field name="name">Categoria tree</field>
+      <field name="model">salespop.category</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.category_form">
+      <field name="name">Categoria form</field>
+      <field name="model">salespop.category</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- valoracion -->
+
+    <record model="ir.ui.view" id="salespop.valoracion_tree">
+      <field name="name">Valoracion tree</field>
+      <field name="model">salespop.valoracion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="puntuacion"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.valoracion_form">
+      <field name="name">Valoracion form</field>
+      <field name="model">salespop.valoracion</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="puntuacion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- foto -->
+
+    <record model="ir.ui.view" id="salespop.foto_tree">
+      <field name="name">Foto tree</field>
+      <field name="model">salespop.foto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="urlImagen"/>
+          <field name="fotoArticulo"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.foto_form">
+      <field name="name">Foto form</field>
+      <field name="model">salespop.foto</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="urlImagen"/>
+              <field name="fotoArticulo"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- empleado -->
+
+    <record model="ir.ui.view" id="salespop.empleado_tree">
+      <field name="name">Empleado tree</field>
+      <field name="model">salespop.empleado</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="email"/>
+          <field name="password"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salespop.empleado_form">
+      <field name="name">Empleado form</field>
+      <field name="model">salespop.empleado</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="email"/>
+              <field name="password"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="salespop.action_user_window">
+      <field name="name">Usuario</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="salespop.action_product_window">
+      <field name="name">Productos</field>
+      <field name="res_model">salespop.product</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="salespop.action_category_window">
+      <field name="name">Categoria</field>
+      <field name="res_model">salespop.category</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="salespop.action_valoracion_window">
+      <field name="name">Valoracion</field>
+      <field name="res_model">salespop.valoracion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="salespop.action_foto_window">
+      <field name="name">Foto</field>
+      <field name="res_model">salespop.foto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="salespop.action_empleado_window">
+      <field name="name">Empleado</field>
+      <field name="res_model">salespop.empleado</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="salespop.action_server">
+      <field name="name">salespop server</field>
+      <field name="model_id" ref="model_salespop_salespop"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="SalesPop" id="salespop.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Usuario" id="salespop.menu_1" parent="salespop.menu_root"/>
+    <menuitem name="Producto" id="salespop.menu_2" parent="salespop.menu_root"/>
+    <menuitem name="Categoria" id="salespop.menu_3" parent="salespop.menu_root"/>
+    <menuitem name="Valoracion" id="salespop.menu_4" parent="salespop.menu_root"/>
+    <menuitem name="Foto" id="salespop.menu_5" parent="salespop.menu_root"/>
+    <menuitem name="Empleado" id="salespop.menu_6" parent="salespop.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Usuario" id="salespop.menu_salespop_user" parent="salespop.menu_1"
+              action="salespop.action_user_window"/>
+    <menuitem name="Producto" id="salespop.menu_salespop_product" parent="salespop.menu_2"
+              action="salespop.action_product_window"/>
+    <menuitem name="Categoria" id="salespop.menu_salespop_category" parent="salespop.menu_3"
+              action="salespop.action_category_window"/>
+    <menuitem name="Valoracion" id="salespop.menu_salespop_valoracion" parent="salespop.menu_4"
+              action="salespop.action_valoracion_window"/>
+    <menuitem name="Foto" id="salespop.menu_salespop_foto" parent="salespop.menu_5"
+              action="salespop.action_foto_window"/>
+    <menuitem name="Empleado" id="salespop.menu_salespop_empleado" parent="salespop.menu_6"
+              action="salespop.action_empleado_window"/>
+
+
+  </data>
+</odoo>
