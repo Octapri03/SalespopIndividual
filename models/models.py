@@ -15,6 +15,7 @@ class user(models.Model):
     password = fields.Char()
     numTel = fields.Integer()
     onSale = fields.One2many('salespop.product', 'seller')
+    valoracion = fields.One2many('salespop.valoracion', 'valoracionUsuario')
 
 class product(models.Model):
     _name = 'salespop.product'
@@ -34,6 +35,7 @@ class category(models.Model):
     _description = 'salespop categories'
 
     name = fields.Selection([('MOTOR', "Motor"), ('INMOBILIARIA', "Inmobiliaria"), ('JUEGOS', "Juegos"), ('INFORMATICA', "Informatica"), ('TELEFONIA', "Telefonia"), ('MODA', "Moda"), ('DEPORTES', "Deportes")], default = 'MOTOR')
+    articuloCategoria = fields.One2many('salespop.product', 'categoria')
 
 class valoracion(models.Model):
     _name = 'salespop.valoracion'
@@ -41,6 +43,7 @@ class valoracion(models.Model):
 
     name = fields.Char()
     puntuacion = fields.Selection([('1', "MEDIOCRE"), ('2', "MALO"), ('3', "REGULAR"), ('4', "BUENO"), ('5', "MUY BUENO")], default = '1')
+    valoracionUsuario = fields.Many2one('salespop.user', 'valoracion')
 
 class foto(models.Model):
     _name = 'salespop.foto'
