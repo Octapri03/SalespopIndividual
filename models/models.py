@@ -58,7 +58,7 @@ class empleado(models.Model):
     _description = 'salespop empleado'
 
     name = fields.Char()
-    email = fields.Integer()
+    email = fields.Char()
     password = fields.Char()
 
 
