@@ -10,12 +10,12 @@ class user(models.Model):
     _description = 'salespop users'
 
     name = fields.Char()
-    userName = fields.Char()
+    user_name = fields.Char()
     mail = fields.Char()
     password = fields.Char()
-    numTel = fields.Integer()
-    onSale = fields.One2many('salespop.product', 'seller')
-    valoracion = fields.One2many('salespop.valoracion', 'valoracionUsuario')
+    num_tel = fields.Integer()
+    on_sale = fields.One2many('salespop.product', 'seller')
+    valoracion = fields.One2many('salespop.valoracion', 'valoracion_usuario')
 
 class product(models.Model):
     _name = 'salespop.product'
@@ -26,16 +26,16 @@ class product(models.Model):
     categoria = fields.Many2one('salespop.category')
     description = fields.Char()
     ubication = fields.Char()
-    publicationDate = fields.Datetime(readonly=True, default=fields.Datetime.now)
+    publication_date = fields.Datetime(readonly=True, default=fields.Datetime.now)
     seller = fields.Many2one('res.partner', ondelete = "cascade")
-    foto = fields.One2many('salespop.foto', 'fotoArticulo')
+    foto = fields.One2many('salespop.foto', 'foto_articulo')
 
 class category(models.Model):
     _name = 'salespop.category'
     _description = 'salespop categories'
 
     name = fields.Selection([('MOTOR', "Motor"), ('INMOBILIARIA', "Inmobiliaria"), ('JUEGOS', "Juegos"), ('INFORMATICA', "Informatica"), ('TELEFONIA', "Telefonia"), ('MODA', "Moda"), ('DEPORTES', "Deportes")], default = 'MOTOR')
-    articuloCategoria = fields.One2many('salespop.product', 'categoria')
+    articulo_categoria = fields.One2many('salespop.product', 'categoria')
 
 class valoracion(models.Model):
     _name = 'salespop.valoracion'
@@ -43,15 +43,15 @@ class valoracion(models.Model):
 
     name = fields.Char()
     puntuacion = fields.Selection([('1', "MEDIOCRE"), ('2', "MALO"), ('3', "REGULAR"), ('4', "BUENO"), ('5', "MUY BUENO")], default = '1')
-    valoracionUsuario = fields.Many2one('salespop.user', 'valoracion')
+    valoracion_usuario = fields.Many2one('salespop.user', 'valoracion')
 
 class foto(models.Model):
     _name = 'salespop.foto'
     _description = 'salespop foto'
 
     name = fields.Char()
-    urlImagen = fields.Char()
-    fotoArticulo = fields.Many2one('salespop.product')
+    url_imagen = fields.Char()
+    foto_articulo = fields.Many2one('salespop.product')
 
 class empleado(models.Model):
     _name = 'salespop.empleado'
